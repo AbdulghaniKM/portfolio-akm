@@ -1,27 +1,27 @@
 <template>
     <div class="bg-mainBg text-white min-h-screen font-InterVar">
-        <header class="z-30 fixed w-full top-0">
+        <header class="z-30 fixed w-full top-0 sm:hidden">
             <div class="bg-mainBg text-center z-50">
-                <ul class="flex justify-center items-center space-x-8 py-2 text-header">
-                    <li class="cursor-pointer z-50 focus:text-glow">
+                <ul class="flex flex-col xs:flex-row justify-center items-center space-x-8 py-2 text-header">
+                    <li class="cursor-pointer z-50 focus:text-glow my-2 xs:my-0">
                         <a href="#about" class="btn btn-ghost cursor-pointer z-50 hover:text-glow">About</a>
                     </li>
-                    <li>
+                    <li class="my-2 xs:my-0">
                         <a href="#projects" class="btn btn-ghost cursor-pointer z-50  hover:text-glow">Projects</a>
                     </li>
                 </ul>
             </div>
         </header>
-        <main>
-            <section id="about" class="min-h-screen flex flex-col items-start justify-center px-8 transition-opacity mt-[4rem]
-                ml-10 -mb-20 text-header">
-                <div class="grid grid-flow-col col-span-2 gap-10">
-                    <div>
-                        <h1 class="text-5xl font-bold">Abdulghani Khalid</h1>
-                        <h2 class="mt-2 text-2xl text-lightBlue">Junior Frontend Developer</h2>
-                        <p class="text-lg mt-4 text-mainTxt">I build pixel-perfect, engaging,<br> and accessible digital
-                            experiences.</p>
-                        <ul class="flex flex-row">
+        <main class="bg-mainBg sm:-mt-[5rem]">
+            <section id="about"
+                class=" min-h-screen  flex flex-col items-center justify-center pt-12 px-8   transition-opacity mt-[4rem] sm:top-0">
+                <div class="grid grid-cols-1 xs:grid-cols-2 gap-10">
+                    <div class="text-center xs:text-left">
+                        <h1 class="text-4xl xs:text-5xl font-bold">Abdulghani Khalid</h1>
+                        <h2 class="mt-2 text-xl xs:text-2xl text-lightBlue">Junior Frontend Developer</h2>
+                        <p class="text-base xs:text-lg mt-4 text-mainTxt">I build pixel-perfect, engaging,<br> and
+                            accessible digital experiences.</p>
+                        <ul class="flex flex-row justify-center xs:justify-start">
                             <li class="mt-4" title="LinkedIn">
                                 <a href="https://www.linkedin.com/in/abdulghani-khalid-mohsin-647278243/"
                                     target="_blank">
@@ -41,7 +41,6 @@
                                     </svg>
                                 </a>
                             </li>
-
                             <li class="mt-4 ml-4" title="Instagram">
                                 <a href="https://instagram.com/abdulghani_k.m" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -53,8 +52,12 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="-mt-20 translate-x-5 text-mainTxt">
-                        <p>
+                    <div class="text-center xs:text-left sm:text-left">
+                        <h1
+                            class="hidden sm:block text-mainTxt text-3xl font-InterVar font-bold sm:text-center sm:mb-7">
+                            About
+                        </h1>
+                        <p class="text-mainTxt">
                             Commencing in 2023, I embarked on a journey of <span class="text-glow"> self-learning
                             </span> within the realm of web
                             development. During this time as a student, I garnered a wealth of knowledge while actively
@@ -64,7 +67,7 @@
                             clients.
                         </p>
                         <br>
-                        <p>
+                        <p class="text-mainTxt">
                             My expertise lies in a structured understanding of <span class="text-glow">HTML</span>,
                             <span class="text-glow">CSS</span>, and <span class="text-glow">JS</span>. Additionally, I
                             employ web frameworks to augment both the functionality and productivity of my projects.
@@ -72,20 +75,18 @@
                                 class="text-glow">Tailwind CSS</span>. I also utilize UI components like <span
                                 class="text-glow">DaisyUI</span>.
                         </p>
-
                     </div>
                 </div>
             </section>
-
-            <section id="projects" class="min-h-screen flex flex-col items-start justify-center px-8 transition-opacity mt-20
-            ml-10 -mb-20 text-header">
+            <section id="projects"
+                class="min-h-screen flex flex-col items-center justify-center px-8 transition-opacity mt-20 sm:mt-5">
                 <div class="mb-2">
                     <h1 class="text-mainTxt text-3xl font-InterVar font-bold">
                         Projects
                     </h1>
                 </div>
-                <div class="grid items-center justify-center grid-flow-row gap-10 text-center grid-cols-2">
-                    <div class="card glass w-96 bg-transparent shadow-2xl" v-for="project in projects"
+                <div class="grid grid-cols-1 xs:grid-cols-2 gap-10">
+                    <div class="card glass w-full xs:w-96 bg-transparent shadow-2xl" v-for="project in projects"
                         :key="project.id">
                         <figure class="px-10 pt-10">
                             <img :src="project.image" class="rounded-xl" />
@@ -104,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="card-actions">
-                                <button class="btn btn-primary">
+                                <button class="btn bg-mainTxt text-mainBg hover:bg-mainBg hover:text-glow outline-none">
                                     <a :href="project.link" target="_blank">
                                         Visit!
                                     </a>
@@ -117,19 +118,18 @@
         </main>
     </div>
 </template>
-
 <script>
 export default {
     data() {
         return {
             projects: [
-                { id: 1, name: "Units Converter", description: "A unit converter application that allows users to convert between units of length.", image: 'src/assets/img/converter.jpg', link: 'https://unit-converter-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS', 'DaisyUI'] },
-                { id: 2, name: "To-Do List", description: "A to-do list application that allows users to create, edit, and delete to-do items.", image: 'src/assets/img/todo.jpg', link: 'https://to-do-lsit-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS', 'DaisyUI'] },
-                { id: 3, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: 'src/assets/img/TicTacToe.png', link: 'https://basic-tic-tac-toe-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS'] },
-                { id: 4, name: "Wather App", description: "A weather application that allows users to search for a city and view the current weather.", image: 'src/assets/img/Weather.png', link: 'https://weatherapp-akmcode.netlify.app/', tech: ['HTML', 'CSS', 'JavaScript'] },
-                { id: 5, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: 'src/assets/img/TicTacToe2.png', link: 'https://basic-tic-tac-toe-akmcode.netlify.app/', tech: ['HTML', 'CSS','JavaScript'] },
-
+                { id: 1, name: "Units Converter", description: "A unit converter application that allows users to convert between units of length.", image: './src/assets/img/converter.jpg', link: 'https://unit-converter-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS', 'DaisyUI'] },
+                { id: 2, name: "To-Do List", description: "A to-do list application that allows users to create, edit, and delete to-do items.", image: './src/assets/img/todo.jpg', link: 'https://to-do-lsit-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS', 'DaisyUI'] },
+                { id: 3, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: './src/assets/img/TicTacToe.png', link: 'https://basic-tic-tac-toe-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS'] },
+                { id: 4, name: "Weather App", description: "A weather application that allows users to search for a city and view the current weather.", image: './src/assets/img/Weather.png', link: 'https://weatherapp-akmcode.netlify.app/', tech: ['HTML', 'CSS', 'JavaScript'] },
+                { id: 5, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: './src/assets/img/TicTacToe2.png', link: 'https://basic-tic-tac-toe-akmcode.netlify.app/', tech: ['HTML', 'CSS', 'JavaScript'] },
             ]
+
         };
     },
     mounted() {
@@ -168,6 +168,13 @@ body {
     background-color: var(--darkBlue);
     color: white;
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header ul {
+    flex-wrap: wrap;
 }
 
 section.in-view {
@@ -179,5 +186,10 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
 }
 </style>

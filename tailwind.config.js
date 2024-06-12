@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+        'sm': { 'max': '639px' },
+      },
       colors: {
         'mainBg' : '#0a182e',
         'glow' : '#44aea1',
