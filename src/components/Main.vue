@@ -9,6 +9,9 @@
                     <li class="my-2 xs:my-0">
                         <a href="#projects" class="btn btn-ghost cursor-pointer z-50  hover:text-glow">Projects</a>
                     </li>
+                    <li class="my-2 xs:my-0">
+                        <a href="#resume" class="btn btn-ghost cursor-pointer z-50  hover:text-glow">Resume</a>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -80,7 +83,7 @@
             </section>
             <section id="projects"
                 class="min-h-screen flex flex-col items-center justify-center px-8 transition-opacity mt-20 sm:mt-5">
-                <div class="mb-2">
+                <div class="my-4 mb-10">
                     <h1 class="text-mainTxt text-3xl font-InterVar font-bold">
                         Projects
                     </h1>
@@ -99,7 +102,8 @@
                                 {{ project.description }}
                             </p>
                             <div class="flex justify-center items-center gap-4">
-                                <div v-if="project.tech && project.tech.length" class="badge bg-mainBg text-glow"
+                                <div v-if="project.tech && project.tech.length"
+                                    class="badge bg-mainBg text-glow sm:whitespace-nowrap"
                                     v-for="(tech, index) in project.tech" :key="index">
                                     {{ tech }}
                                 </div>
@@ -115,6 +119,32 @@
                     </div>
                 </div>
             </section>
+            <section class="font-InterVar my-4 pb-7" id="resume">
+                <div class="flex flex-col justify-center items-center mt-12 mb-0 ">
+                    <h2 class="text-2xl text-mainTxt font-bold">
+                        Download My Resume
+                    </h2>
+                    <p
+                        class="sm:whitespace-nowrap sm:max-w-screen sm:overflow-x-auto text-mainTxt font-InterVar text-center mb-2">
+                        For more information about me,<br> check out my resume!
+                    </p>
+
+                    <div>
+                        <button class="btn bg-mainTxt text-mainBg hover:bg- hover:text-glow outline-none">
+                            <a href="./src/assets/Abdulghani Khalid Mohsen - Resume.pdf"
+                                download="Abdulghani Khalid Mohsen - Resume.pdf">
+                                Download
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <div>
+                <p
+                    class="sm:whitespace-nowrap sm:max-w-screen sm:overflow-x-auto text-mainTxt font-InterVar text-center mb-2">
+                    Design inspired by: Brittany Chiang
+                </p>
+            </div>
         </main>
     </div>
 </template>
@@ -127,11 +157,32 @@ export default {
                 { id: 2, name: "To-Do List", description: "A to-do list application that allows users to create, edit, and delete to-do items.", image: './src/assets/img/todo.jpg', link: 'https://to-do-lsit-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS', 'DaisyUI'] },
                 { id: 3, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: './src/assets/img/TicTacToe.png', link: 'https://basic-tic-tac-toe-akmcode.netlify.app/', tech: ['Vue.js', 'Tailwind CSS'] },
                 { id: 4, name: "Weather App", description: "A weather application that allows users to search for a city and view the current weather.", image: './src/assets/img/Weather.png', link: 'https://weatherapp-akmcode.netlify.app/', tech: ['HTML', 'CSS', 'JavaScript'] },
-                { id: 5, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: './src/assets/img/TicTacToe2.png', link: 'https://basic-tic-tac-toe-akmcode.netlify.app/', tech: ['HTML', 'CSS', 'JavaScript'] },
+                { id: 5, name: "Tic Tac Toe", description: "A tic-tac-toe game.", image: './src/assets/img/TicTacToe2.png', link: 'https://tictactoe-with-tut-akmcode.netlify.app/', tech: ['HTML', 'CSS', 'JavaScript'] },
             ]
 
         };
     },
+    methods: {
+        downloadFile() {
+            const fileUrl = '.src/assets/Abdulghani Khalid Mohsen - Resume.pdf'; // Replace with your file URL
+            const fileName = 'Abdulghani Khalid Mohsen - Resume.pdf'; // Replace with the desired file name
+
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = fileName;
+
+            // Append the link to the body (required for Firefox)
+            document.body.appendChild(link);
+
+            // Programmatically click the link to trigger the download
+            link.click();
+
+            // Remove the link from the document
+            document.body.removeChild(link);
+        }
+    },
+
     mounted() {
         const sections = document.querySelectorAll('section');
 
